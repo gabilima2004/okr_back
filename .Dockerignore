@@ -1,0 +1,15 @@
+# Ignore node modules and other unnecessary files
+node_modules
+npm-debug.log
+yarn-error.log
+.env
+*.ts
+*.log
+.git
+.gitignore
+Dockerfile
+Dockerfile.dev
+README.md
+.idea
+.vscode
+test
