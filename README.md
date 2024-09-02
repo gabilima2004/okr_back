@@ -4,7 +4,7 @@
 
 `$ nest new nome-do-projeto`
 
-## Utilizando o Docker
+## Utilizando o Docker (engine)
 
 ### Requisitos
 
@@ -27,9 +27,9 @@ Depois de construir a imagem, você pode iniciar um container a partir dela com 
 
 `docker run -p 3000:3000 --name meu-container-nestjs minha-imagem-nestjs`
 
-#### -p 3000:3000 mapeia a porta 3000 do container para a porta 3000 da sua máquina local.
-#### --name meu-container-nestjs define um nome para o container.
-#### minha-imagem-nestjs é o nome da imagem que você criou.
+ -p 3000:3000 mapeia a porta 3000 do container para a porta 3000 da sua máquina local.
+ --name meu-container-nestjs define um nome para o container.
+ minha-imagem-nestjs é o nome da imagem que você criou.
 
 ### Verificar o status do container
 
@@ -38,3 +38,8 @@ Depois de construir a imagem, você pode iniciar um container a partir dela com 
 ### Acessar a aplicação
 
 Coloque no navegador http://localhost:3000
+
+### Parar a execução do container
+
+`docker stop meu-container-nestjs`
+

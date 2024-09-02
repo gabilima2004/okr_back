@@ -1,35 +1,35 @@
-# Base image
+# Imagem base
 FROM node:18-alpine AS builder
 
-# Set working directory
+# Definir o diretório de trabalho
 WORKDIR /app
 
-# Install dependencies
+# Instalar dependências
 COPY package*.json ./
 RUN npm install
 
-# Copy project files
+# Copiar arquivos do projeto
 COPY . .
 
-# Build the project
+# Construir o projeto
 RUN npm run build
 
-# Production image
+# Imagem de produção
 FROM node:18-alpine AS production
 
-# Set working directory
+# Definir o diretório de trabalho
 WORKDIR /app
 
-# Copy package.json and install only production dependencies
+# Copiar package.json e instalar apenas dependências de produção
 COPY package*.json ./
 RUN npm install --only=production
 
-# Copy built files and Prisma Client from the builder stage
+# Copiar arquivos construídos e Prisma Client da etapa de construção
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
 
-# Expose the port the app runs on
+# Expor a porta em que a aplicação roda
 EXPOSE 3000
 
-# Start the application
+# Iniciar a aplicação
 CMD ["node", "dist/main"]
